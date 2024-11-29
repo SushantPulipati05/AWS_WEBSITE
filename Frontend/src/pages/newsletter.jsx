@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Background from '../components/background';
 import Navbar from '../components/navbar';
+import { useNavigate } from 'react-router-dom';
 const Newsletters = () => {
   const [newsletters, setNewsletters] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function fetchNewsletters() {
@@ -38,6 +40,13 @@ const Newsletters = () => {
     <div className="wrapper">
       <Navbar />
       <h2 className="text-2xl font-semibold mb-4">All Newsletters</h2>
+
+      <button
+          onClick={() => navigate('/create-newsletter')}
+          className="mb-4 px-6 py-2 bg-blue-600 text-white rounded-lg"
+        >
+          Create Newsletter
+      </button>
 
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 ">
